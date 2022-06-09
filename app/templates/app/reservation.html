@@ -1,0 +1,31 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %} Rezerwacja wizyty | Przychodnia Weterynaryjna | Z miłości do zwierząt {% endblock %}
+<!--Pasek nawigacyjny-->
+{% include "app/navbar.html" %}
+
+{% block content %}
+
+<section id="reservation" class="p-5 bg-light">
+    <h2 class="text-dark text-center">Zarezerwuj</h2>
+    <div class="form-group p-5">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="checkbox" id="isChecked" required>
+            Wyrażam zgodę na przetwarzanie moich danych osobowych zawartych w formularzu dla
+            potrzeb niezbędnych do realizacji zamówienia i świadczenia usług serwisowych
+            (zgodnie z Ustawą z dnia 29.08.1997 roku o Ochronie Danych Osobowych; tekst jednolity: Dz. U. z 2002r. Nr 101, poz. 926 ze zm.).
+            <br/> <br/>
+            <button class="btn2">Rezerwuj</button>
+        </form>
+    </div>
+</section>
+
+<script>
+function myFunction() {
+  var x = document.getElementById("isChecked").required;
+}
+</script>
+
+{% endblock %}

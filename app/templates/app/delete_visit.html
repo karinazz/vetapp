@@ -1,0 +1,23 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %} Usuwanie wizyty | Przychodnia Weterynaryjna | Z miłości do zwierząt {% endblock %}
+<!--Pasek nawigacyjny-->
+{% include "app/navbar.html" %}
+
+{% block content %}
+
+<section id="del_visit" class="p-5 bg-light">
+    <h2 class="text-dark">Usuń wizytę..</h2>
+    <br/><br/>
+    <h4>Chcesz usunąć wizytę: {{ reservation.animal_name }}</h4>
+
+    <div class="form-group p-5">
+        <form method="POST">
+            {% csrf_token %}
+          <strong> Czy jesteś tego pewny?</strong><br/><br/>
+            <button class="btn2">Usuń wizytę!</button>
+        </form>
+    </div>
+</section>
+
+{% endblock %}

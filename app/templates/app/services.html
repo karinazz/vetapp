@@ -1,0 +1,141 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Usługi | Przychodnia Weterynaryjna | Z miłości do zwierząt {% endblock %}
+<!--Pasek nawigacyjny-->
+{% include "app/navbar.html" %}
+
+{% block content %}
+
+   <!--Usługi -->
+<section id="services" class="p-5 bg-light">
+      <div class="container">
+        <h2 class="text-center text-dark">USŁUGI</h2>
+        <p class="lead text-center text-dark mb-5">
+          Nasza przychodnia od ponad 10 lat pomaga Waszym zwierzętom!
+        </p>
+        <div class="row g-4">
+          <!-- Pozycja nr 1 -->
+          <div class="col-md-6 col-lg-3">
+            <div class="card h-100 bg-light">
+              <div class="card-body text-center">
+                <div class="h1 mb-3">
+                  <i class="bi bi-bug"></i>
+                </div>
+                <h3 class="card-title mb-3">PROFILAKTYKA</h3>
+                <p class="card-text">
+                  Szczepienia, odrobaczenia, wydawanie paszportów, czipowanie oraz badania profilaktyczne.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pozycja nr 2 -->
+          <div class="col-md-6 col-lg-3">
+            <div class="card h-100 bg-light">
+              <div class="card-body text-center">
+                <div class="h1 mb-3">
+                  <i class="bi bi-droplet fa-8x"></i>
+                </div>
+                <h3 class="card-title mb-3">INTERNA</h3>
+                <p class="card-text">
+                  Choroby wewnętrzne z endokrynologią i rozrodem.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pozycja nr 3 -->
+          <div class="col-md-6 col-lg-3">
+            <div class="card h-100 bg-light">
+              <div class="card-body text-center">
+                <div class="h1 mb-3">
+                  <i class="bi bi-scissors fa-8x"></i>
+                </div>
+                <h3 class="card-title mb-3">CHIRURGIA</h3>
+                <p class="card-text">
+                  Przeprowadzamy zabiegi chirurgiczne w zakresie chirurgii tkanek miękkich, ortopedii oraz onkologii.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pozycja nr 4 -->
+          <div class="col-md-6 col-lg-3">
+            <div class="card h-100 bg-light">
+              <div class="card-body text-center">
+                <div class="h1 mb-3">
+                  <i class="bi bi-laptop fa-8x"></i>
+                </div>
+                <h3 class="card-title mb-3">DIAGNOSTYKA</h3>
+                <p class="card-text">
+                  Bogate wyposażenie pozwala nam wykonać niezbędną diagnostykę na miejscu.
+                </p>
+              </div>
+            </div>
+          </div>
+
+            <!-- Pozycja nr 5 -->
+            <div class="col-md-6 col-lg-3 mt-5">
+            <div class="card h-100 bg-light">
+              <div class="card-body text-center">
+                <div class="h1 mb-3">
+                  <i class="bi bi-zoom-in fa-8x"></i>
+                </div>
+                <h3 class="card-title mb-3">DERMATOLOGIA</h3>
+                <p class="card-text">
+                  Wymazy, zeskrobiny, ocena cytologiczna, testy alergiczne.
+                </p>
+              </div>
+            </div>
+          </div>
+
+            <!-- Pozycja nr 6 -->
+            <div class="col-md-6 col-lg-3 mt-5">
+            <div class="card h-100 bg-light">
+              <div class="card-body text-center">
+                <div class="h1 mb-3">
+                  <i class="bi bi-suit-heart-fill fa-8x"></i>
+                </div>
+                <h3 class="card-title mb-3">KARDIOLOGIA</h3>
+                <p class="card-text">
+                  Echo serca, ekg, pomiar ciśnienia, holter, RTG, popłuczyny z drzewa oskrzelowego.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pozycja nr 7-->
+            <div class="col-md-6 col-lg-3 mt-5">
+            <div class="card h-100 bg-light">
+              <div class="card-body text-center">
+                <div class="h1 mb-3">
+                  <i class="bi bi-screwdriver fa-8x"></i>
+                </div>
+                <h3 class="card-title mb-3">STOMATOLOGIA</h3>
+                <p class="card-text">
+                  Czyszczenie, polerowanie, ekstrakcje, zdjęcia RTG wewnątrz ustnym aparatem.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pozycja nr 8 -->
+            <div class="col-md-6 col-lg-3 mt-5">
+            <div class="card h-100 bg-light">
+              <div class="card-body text-center">
+                <div class="h1 mb-3">
+                  <i class="bi bi-eye fa-8x"></i>
+                </div>
+                <h3 class="card-title mb-3">OKULISTYKA</h3>
+                <p class="card-text">
+                  Badanie dna oka, pomiar ciśnienia, USG gałki ocznej i oczodołu, udrożnienie
+                  przewodów nosowo-łzowych i zabiegi chirurgiczne.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+{% endblock %}

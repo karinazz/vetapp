@@ -1,0 +1,44 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Lista wizyt | Przychodnia Weterynaryjna | Z miłości do zwierząt {% endblock %}
+<!-- Pasek nawigacyjny -->
+{% include "app/navbar.html" %}
+
+{% block content %}
+
+<section class="post-list p-5">
+    <h1 class="text-center">Lista wizyt</h1>
+    <br/>
+    <div class="visits">
+        {% if user.is_authenticated %}
+            <a href="{% url 'choose-vet' %}" class="btn2 d-flex justify-content-center"> Dodaj nową wizytę</a> <br/>  <br/>
+            {% endif %}
+        <ol reversed>
+            {% for reservation in object_list %}
+            <li>
+                <a href="{% url 'visit-details' reservation.pk %}">Imię zwierzęcia: {{ reservation.animal_name }} </a>|
+                Typ zwierzęcia: {{ reservation.animal_type }} |
+                Imię właściciela: {{ reservation.owner_name }} |
+                Nazwisko właściciela: {{ reservation.owner_surname }} |
+                Numer kontaktowy: {{ reservation.phone }} |
+                Data rezerwacji: {{ reservation.working_time}}
+
+
+
+                {% if user.is_authenticated %}
+                <a href="{% url 'edit-visit' reservation.pk %}"> (Edytuj) </a>
+                {% endif %}
+                {% if user.is_superuser %}
+                <a href="{% url 'delete-visit' reservation.pk %}"> (Usuń) </a>
+                {% endif %}
+                <br/>
+                {{ post.text }}
+                <br/>
+            </li>
+            {% endfor %}
+            <br/>
+        </ol>
+    </div>
+</section>
+
+{% endblock %}

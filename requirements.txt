@@ -1,0 +1,4 @@
+Django==4.0.4
+pip==22.1.2
+django-ckeditor~=6.4.1
+Pillow

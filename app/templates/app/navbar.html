@@ -1,0 +1,47 @@
+{% url 'app:home' as home_url %}
+{% url 'app:about' as about_url %}
+{% url 'app:services' as services_url %}
+{% url 'app:agenda' as agenda_url %}
+{% url 'app:blog' as blog_url %}
+{% url 'app:contact' as contact_url %}
+{% url 'app:order' as order_url %}
+{% url 'app:staff-panel' as staff-panel_url %}
+{% url 'app:add-post' as add-post_url %}
+{% url 'app:article-details' as article-details_url %}
+{% url 'app:animal-details' as animal-details_url %}
+
+<!--Pasek nawigacyjny-->
+    <nav class="navbar navbar-expand-lg bg-success navbar-dark py-3">
+        <div class="container">
+            <a href="{% url 'home' %}" class="navbar-brand">Przychodnia Weterynaryjna</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navmenu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a href="{% url 'about' %}" class="nav-link mx-2">O nas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'services' %}" class="nav-link mx-2">Usługi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'agenda' %}" class="nav-link mx-2">Grafik</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'blog' %}" class="nav-link mx-2">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contactUs" class="nav-link mx-2">Kontakt</a>
+                    </li>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a href="{% url 'staff-panel' %}" class="nav-link mx-2">Zarządzaj</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>

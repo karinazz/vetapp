@@ -1,0 +1,23 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %} Edycja posta | Przychodnia Weterynaryjna | Z miłości do zwierząt {% endblock %}
+<!-- Pasek nawigacyjny -->
+{% include "app/navbar.html" %}
+
+{% block content %}
+
+<section id="update-post" class="p-5 bg-light">
+    <h2 class="text-dark">Edytuj post..</h2>
+    <div class="form-group p-5">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.media }}
+            {{ form.as_p }}
+            <button class="btn2">Edytuj</button>
+        </form>
+    </div>
+</section>
+
+{% endblock %}
+
+

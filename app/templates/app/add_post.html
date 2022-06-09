@@ -1,0 +1,23 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %} Dodaj post | Przychodnia Weterynaryjna | Z miłości do zwierząt {% endblock %}
+<!--Pasek nawigacyjny-->
+{% include "app/navbar.html" %}
+
+{% block content %}
+
+<section id="add-post" class="p-5 bg-light">
+    <h2 class="text-dark">Dodaj nowy post..</h2>
+    <div class="form-group p-5">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.media }}
+            {{ form.as_p }}
+        <button class="btn2">Opublikuj</button>
+        </form>
+    </div>
+</section>
+
+{% endblock %}
+
+

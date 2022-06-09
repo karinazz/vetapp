@@ -1,0 +1,42 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Terminarz | Przychodnia Weterynaryjna | Z miłości do zwierząt {% endblock %}
+<!--Pasek nawigacyjny-->
+{% include "app/navbar.html" %}
+
+{% block content %}
+
+
+ <!--Opinie -->
+   <section class="agenda-pics p-3 bg-light">
+       <div class="agenda-pics-view">
+            <!-- Bootstrap carousel-->
+                    <div class="carousel slide" id="carouselExampleControls" data-bs-ride="carousel">
+               <div class="carousel-inner">
+                   <!-- Opinia klienta nr 1 -->
+                   {% for agenda in object_list %}
+                   <div class="carousel-item{% if forloop.first %} active{% endif %}">
+                       <div class="block">
+                           <div class="row">
+                                   <img src="{{ agenda.cover.url}}" alt="{{ agenda.title }}">
+                           </div>
+                       </div>
+                   </div>
+                   {% endfor %}
+                   </div>
+                   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                       <span class="visually-hidden">Previous</span>
+                   </button>
+
+                   <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                       <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                       <span class="visually-hidden">Next</span>
+                   </button>
+               </div>
+           </div>
+   </section>
+
+{% endblock %}
+
+

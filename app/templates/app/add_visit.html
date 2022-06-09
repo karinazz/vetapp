@@ -1,0 +1,23 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %} Dodaj wizytę | Przychodnia Weterynaryjna | Z miłości do zwierząt {% endblock %}
+<!--Pasek nawigacyjny-->
+{% include "app/navbar.html" %}
+
+{% block content %}
+
+<section id="reservation" class="p-5 bg-light">
+    <h2 class="text-dark text-center">Zarezerwuj</h2>
+    <div class="form-group p-5">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="checkbox"> Klient wyraża zgodę na przetwarzanie danych osobowych RODO.
+            <br/>
+            <br/>
+            <button class="btn2">Rezerwuj</button>
+        </form>
+    </div>
+</section>
+
+{% endblock %}

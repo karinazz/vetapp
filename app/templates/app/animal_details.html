@@ -1,0 +1,71 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %} {{ animal.name }} | Przychodnia Weterynaryjna | Z miłości do zwierząt {% endblock %}
+<!--Pasek nawigacyjny-->
+{% include "app/navbar.html" %}
+
+{% block content %}
+
+<section class="animal-details p-5">
+    <div class="details text-center">
+        <h1 class="text-center">{{ animal.name}}</h1>
+        {% if user.is_authenticated %}
+        <br />
+    <a href="{% url 'edit-animal' animal.pk %}" class="btn2">Edytuj</a>
+        {% endif %}
+        {% if user.is_superuser %}
+    <a href="{% url 'delete-animal' animal.pk %}" class="btn2">Usuń</a>
+        {% endif %}
+
+        <br/>
+        <br/>
+        <hr>
+        <h3>Dane zwierzęcia</h3>
+        Imię: {{ animal.name }}
+        <br/>
+        Płeć: {{ animal.sex }}
+        <br/>
+        Gatunek: {{ animal.type }}
+        <br/>
+        Rasa: {{ animal.breed }}
+        <br/>
+        Kastracja: {{ animal.neutered }}
+        <br/>
+        Chip/Tatuaż: {{ animal.chip }}
+        <br/>
+        Znaki szczególne: {{ animal.additional_info }}
+        <br/>
+        <br/>
+        <hr>
+        <h3>Dane właściciela</h3>
+        Imię: {{ animal.owner_name }}
+        <br/>
+        Nazwisko: {{ animal.owner_surname }}
+        <br/>
+        Telefon: {{ animal.contact }}
+        <br/>
+        E-mail: {{ animal.mail }}
+        <br/>
+        Adres zamieszkania: {{ animal.address }}
+        <br/>
+        Zgoda na przetwarzanie danych: {{ animal.RODO }}
+        <br/>
+        Inne osoby upoważnione przez właściciela: {{ animal.additional_info }}
+        <br/>
+        <hr>
+
+        <h3>HISTORIA WIZYT</h3>
+        {% for reservation in animal.reservations.all %}
+         {% if reservation.animal_name  == animal.name  %}
+        <a href="{% url 'visit-details' reservation.pk %} "> Data: {{ reservation.working_time }}</a>
+        Typ wizyty: {{ reservation.visit_type}} <br/>
+        {% endif %}
+        {% endfor %}
+        <br />
+        <br />
+        <br />
+        <a href="{% url 'animals' %}" class="btn2">Powrót</a>
+    </div>
+</section>
+
+{% endblock %}

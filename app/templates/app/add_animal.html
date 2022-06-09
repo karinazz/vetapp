@@ -1,0 +1,21 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %} Dodaj zwierzę do bazy | Przychodnia Weterynaryjna | Z miłości do zwierząt {% endblock %}
+<!--Pasek nawigacyjny-->
+{% include "app/navbar.html" %}
+
+{% block content %}
+
+<section id="add-animal" class="p-5 bg-light">
+    <h2 class="text-dark text-center">Dodaj zwierzę do bazy</h2>
+    <div class="form-group p-5">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <br/> <br/>
+            <button class="btn2">Dodaj</button>
+        </form>
+    </div>
+</section>
+
+{% endblock %}

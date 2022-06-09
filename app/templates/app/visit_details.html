@@ -1,0 +1,32 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %} Karta pacjenta {{ reservation.animal_name }} | Przychodnia Weterynaryjna | Z miłości do zwierząt {% endblock %}
+<!-- Pasek nawigacyjny -->
+{% include "app/navbar.html" %}
+
+{% block content %}
+
+<h1 class="text-center p-5">Karta pacjenta {{ reservation.animal_name }}</h1>
+<small>Imię i nazwisko właściciela: {{ reservation.owner_name }} {{ reservation.owner_surname }} |
+Typ zwierzęcia: {{ reservation.animal_type }}
+    <a href="{% url 'edit-visit' reservation.pk %}"> (Edytuj) </a>
+    {% if user.is_superuser %}
+    <a href="{% url 'delete-visit' reservation.pk %}"> (Usuń) </a>
+    {% endif %}
+
+</small>
+<hr>
+<div class="visit-info">
+<h4>Data wizyty i weterynarz: {{ reservation.working_time }} </h4>
+    Typ wizyty: {{ reservation.visit_type }} <br/><br/><br/><br/>
+    Informacje: <br/>
+    {{ reservation.visit_info }}
+</div>
+<br/><br/>
+<br/><br/>
+<br/><br/>
+<br/><br/>
+<a href="{% url 'animals' %}" class="btn2">Powrót</a>
+
+{% endblock %}
+

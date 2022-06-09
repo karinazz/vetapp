@@ -1,0 +1,20 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %} Edycja wizyty | Przychodnia Weterynaryjna | Z miłości do zwierząt {% endblock %}
+<!--Pasek nawigacyjny-->
+{% include "app/navbar.html" %}
+
+{% block content %}
+
+<section id="edit-visit" class="p-5 bg-light">
+    <h2 class="text-dark">Edytuj wizytę..</h2>
+    <div class="form-group p-5">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn2">Zapisz</button>
+        </form>
+    </div>
+</section>
+
+{% endblock %}

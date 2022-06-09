@@ -1,0 +1,39 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Baza zwierząt | Przychodnia Weterynaryjna | Z miłości do zwierząt {% endblock %}
+<!--Pasek nawigacyjny-->
+{% include "app/navbar.html" %}
+
+{% block content %}
+
+<section class="animals p-5">
+    <h1 class="text-center">Baza zwierząt</h1>
+    <br/>
+    <div class="visits">
+        {% if user.is_authenticated %}
+        <a href="{% url 'add-animal'%} " class="btn2 d-flex justify-content-center">Dodaj nowego pacjenta</a>
+        <br/>
+        <br/>
+        <br/>
+            {% endif %}
+        <ol reversed>
+            {% for animal in object_list %}
+            <li>
+                <a href="{% url 'animal-details' animal.pk %}"> Imię zwierzęcia: {{ animal.name }} </a>|
+                Typ zwierzęcia: {{ animal.type }} | Właściciel: {{ animal.owner_name }} {{ animal.owner_surname }}
+
+
+                {% if user.is_authenticated %}
+                <a href="{% url 'edit-animal' animal.pk %}"> Edytuj </a>
+                <a href="{% url 'delete-animal' animal.pk %}"> Usuń </a>
+                {% endif %}
+                <br/>
+                <br/>
+            </li>
+            {% endfor %}
+            <br/>
+        </ol>
+    </div>
+</section>
+
+{% endblock %}

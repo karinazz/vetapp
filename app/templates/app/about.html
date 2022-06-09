@@ -1,0 +1,108 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Nasz zespół | Przychodnia Weterynaryjna | Z miłości do zwierząt {% endblock %}
+<!--Pasek nawigacyjny-->
+{% include "app/navbar.html" %}
+
+{% block content %}
+<!--Lista weterynarzy-->
+    <section id="vets" class="p-5 bg-light">
+      <div class="container">
+        <h2 class="text-center text-dark">Nasz zespół</h2>
+        <p class="lead text-center text-black mb-5">
+          To właśnie oni dbają o Wasze zwierzęta!
+        </p>
+        <div class="row g-4">
+
+            <!-- Pierwsza osoba -->
+            <div class="col-md-6 col-lg-3">
+            <div class="card bg-light">
+              <div class="card-body text-center">
+                <img src="https://randomuser.me/api/portraits/women/44.jpg" class="rounded-circle mb-3" alt=""/>
+                <h3 class="card-title mb-3">lek. wet Martyna Wasiak</h3>
+                <div class="card-text">
+                <h6>Specjalista chorób psów i kotów</h6>
+                Kierownik Przychodni
+                </div>
+              </div>
+            </div>
+          </div>
+
+            <!-- Druga osoba -->
+            <div class="col-md-6 col-lg-3">
+            <div class="card bg-light">
+              <div class="card-body text-center">
+                <img src="https://randomuser.me/api/portraits/women/9.jpg" class="rounded-circle mb-3" alt=""/>
+                <h3 class="card-title mb-3">lek. wet Adrianna Nowak</h3>
+                <div class="card-text">
+                <h6> Specjalista chorób psów i kotów </h6>
+                Dermatolog
+                </div>
+              </div>
+            </div>
+          </div>
+
+            <!-- Trzecia osoba -->
+            <div class="col-md-6 col-lg-3">
+            <div class="card bg-light">
+              <div class="card-body text-center">
+                  <img src="https://randomuser.me/api/portraits/men/77.jpg" class="rounded-circle mb-3" alt=""/>
+                <h3 class="card-title mb-3">lek. wet Dariusz Jakubiak</h3>
+                <div class="card-text">
+                <h6>Specjalista chorób psów i kotów</h6>
+                Choroby wewnętrzne (interna)
+                </div>
+              </div>
+            </div>
+          </div>
+
+            <!-- Czwarta osoba -->
+            <div class="col-md-6 col-lg-3">
+            <div class="card bg-light">
+              <div class="card-body text-center">
+                <img
+                  src="https://randomuser.me/api/portraits/men/7.jpg"
+                  class="rounded-circle mb-3"
+                  alt=""/>
+                <h3 class="card-title mb-3">lek. wet Janusz Wasilewczuk</h3>
+                <div class="card-text">
+                <h6>Specjalista chorób psów i kotów</h6>
+                Choroby wewnętrzne (interna)
+                </div>
+              </div>
+            </div>
+          </div>
+
+            <!-- Piąta osoba -->
+            <div class="col-md-6 col-lg-3 mt-5">
+            <div class="card bg-light">
+              <div class="card-body text-center">
+                <img src="https://randomuser.me/api/portraits/women/0.jpg" class="rounded-circle mb-3" alt=""/>
+                <h3 class="card-title mb-3">lek. wet Karolina Wojewódzka</h3>
+                <div class="card-text">
+                <h6>Specjalista chirurgii weterynaryjnej</h6>
+                Ortopedia
+                </div>
+              </div>
+            </div>
+          </div>
+
+            <!-- Szósta osoba -->
+            <div class="col-md-6 col-lg-3 mt-5">
+            <div class="card bg-light">
+              <div class="card-body text-center">
+                    <img src="https://randomuser.me/api/portraits/women/63.jpg" class="rounded-circle mb-3" alt=""/>
+                <h3 class="card-title mb-3">lek. wet Joanna Kaczmarek</h3>
+                <div class="card-text">
+                <h6>Specjalista chorób psów i kotów </h6>
+                Kardiologia
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+{% endblock %}
+

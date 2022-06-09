@@ -1,0 +1,37 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Wybierz weterynarza | Przychodnia Weterynaryjna | Z miłości do zwierząt {% endblock %}
+<!--Pasek nawigacyjny-->
+{% include "app/navbar.html" %}
+
+{% block content %}
+
+    <section id="instructors" class="p-5 bg-light">
+      <div class="container">
+        <h2 class="text-center text-dark">Wybierz weterynarza</h2>
+        <div class="row g-4">
+
+            {% for vet in vets %}
+            <div class="col-md-6 col-lg-3 mt-5">
+              <div class="card bg-light ">
+                <div class="card-body text-center">
+                  <img src="{{ vet.photo.url }}" class="rounded-circle mb-3" alt=""/>
+                  <h4 class="card-title mb-3">{{ vet.name }}</h4>
+                  <div class="card-text">
+                  <h6>{{ vet.description }}</h6>
+                  {{ vet.specialization}}
+                      <br/>
+                  <a href="{% url 'reservation' %}?vet_id={{ vet.id }}" class="">Wybierz weterynarza</a> <br/>
+                </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+            <!-- Pierwsza osoba -->
+
+        </div>
+      </div>
+    </section>
+
+{% endblock %}
+
