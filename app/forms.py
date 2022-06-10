@@ -23,7 +23,8 @@ class PostForm(forms.ModelForm):
 
 
 class ReservationForm(forms.ModelForm):
-    working_time = MyModelChoiceField(queryset=WorkingTime.objects.all(), label="Termin")
+    working_time = MyModelChoiceField(queryset=WorkingTime.objects.all(),
+                                      label="Data rezerwacji", widget=forms.Select(attrs={"class": "form-control"}))
     vet_name = forms.CharField(
         widget=forms.TextInput(attrs={'readonly': 'readonly', 'class': 'form-control'}),
         label="Weterynarz"
@@ -58,6 +59,18 @@ class ReservationForm(forms.ModelForm):
 
 
 class AnimalForm(forms.ModelForm):
+    reservation = forms.ModelChoiceField(queryset=Reservation.objects.all(), label="Rezerwacja",
+                                         widget=forms.Select(attrs={"class": "form-control"}))
+
+    def save(self, commit=True):
+        animal = super().save(commit=False)
+        reservation = self.cleaned_data.get("reservation")
+        if commit:
+            animal.save()
+            reservation.animal = animal
+            reservation.save()
+        return animal
+
     class Meta:
         model = Animal
         fields = ('name', 'sex', 'type', 'breed', 'weight', 'how_old', 'neutered', 'chip', 'nr_chip', 'owner_name',

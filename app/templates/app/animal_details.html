@@ -56,10 +56,8 @@
 
         <h3>HISTORIA WIZYT</h3>
         {% for reservation in animal.reservations.all %}
-         {% if reservation.animal_name  == animal.name  %}
         <a href="{% url 'visit-details' reservation.pk %} "> Data: {{ reservation.working_time }}</a>
         Typ wizyty: {{ reservation.visit_type}} <br/>
-        {% endif %}
         {% endfor %}
         <br />
         <br />
