@@ -16,7 +16,8 @@
         <form method="POST">
             {% csrf_token %}
           <strong> Czy jesteś tego pewny?</strong><br/> <br/>
-            <button class="btn2">Usuń post!</button>
+            <button class="btn2">Usuń post!</button> <br/> <br/>
+             <a href="{% url 'blog' %}" class="btn2">Powrót</a>
         </form>
     </div>
 </section>

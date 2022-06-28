@@ -12,7 +12,7 @@
     {{ post.author.last_name}} -
     {{ post.post_date }}
 
-    {% if user.is_authenticated %}
+    {% if is_receptionist %}
     <a href="{% url 'update-post' post.pk %}"> (Edytuj) </a>
     <a href="{% url 'delete-post' post.pk %}"> (Usuń) </a>
     {% endif %}

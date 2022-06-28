@@ -11,7 +11,7 @@
         <h1 class="text-center">Przydatne informacje</h1>
         <h4 class="text-center">To warto wiedzieć!</h4>
         <br/>
-        {% if user.is_authenticated %}
+        {% if is_receptionist %}
             <a href="{% url 'add-post' %}" class="btn2 d-flex justify-content-center"> Dodaj nowy post</a>
             {% endif %}
         <br/>
@@ -25,7 +25,7 @@
                             <a href="{% url 'article-details' post.pk %}"> {{ post.title }} </a></h5>
                                 Opublikowano dnia: <br/>
                                 {{ post.post_date }}
-                        {% if user.is_authenticated %}
+                        {% if is_receptionist %}
                         <br/>
                         <br/>
                         <a href="{% url 'update-post' post.pk %}" class="btn2 mx-2"> Edytuj </a>

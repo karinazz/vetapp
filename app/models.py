@@ -36,17 +36,19 @@ VISIT_TYPES_CHOICES = (
     ('Konsultacja chirurgiczna', 'KONSULTACJA CHIRURGICZNA'),
 )
 
+#Grafik
+
 
 class Agenda(models.Model):
-    title = models.TextField()
-    cover = models.ImageField(upload_to='images/')
+    title = models.TextField(verbose_name='Miesiąc')
+    cover = models.ImageField(upload_to='images/', verbose_name='Dodaj zdjęcie')
 
     def __str__(self):
         return self.title
 
     class Meta:
-        verbose_name = "grafik"
-        verbose_name_plural = "grafiki"
+        verbose_name = "Harmonogram pracy"
+        verbose_name_plural = "Harmonogram pracy"
 
 
 #Klasa POST do BLOGA
@@ -75,12 +77,14 @@ class Post(models.Model):
         verbose_name = "post"
         verbose_name_plural = "posty"
 
+#Weterynarze
+
 
 class Vet(models.Model):
-    name = models.CharField(max_length=100)
-    photo = models.ImageField(upload_to="vet-photos/")
-    description = models.CharField(max_length=200, default='Opis..')
-    specialization = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, verbose_name='Imię weterynarza')
+    photo = models.ImageField(upload_to="vet-photos/", verbose_name='Zdjęcie')
+    description = models.CharField(max_length=200, verbose_name='Dodatkowe informacje')
+    specialization = models.CharField(max_length=100, verbose_name='Specjalizacja')
     
     def __str__(self):
         return self.name
@@ -89,11 +93,13 @@ class Vet(models.Model):
         verbose_name = "weterynarz"
         verbose_name_plural = "weterynarze"
 
+# Czas pracy weterynarzy
+
 
 class WorkingTime(models.Model):
-    vet = models.ForeignKey(Vet, on_delete=models.CASCADE)
-    start_datetime = models.DateTimeField()
-    is_booked = models.BooleanField(default=False)
+    vet = models.ForeignKey(Vet, on_delete=models.CASCADE, verbose_name='Weterynarz')
+    start_datetime = models.DateTimeField(verbose_name='Rozpoczęcie pracy')
+    is_booked = models.BooleanField(default=False, verbose_name='Zajęty termin')
 
     def __str__(self):
         return format(self.start_datetime, settings.DATETIME_FORMAT) + f" {self.vet} "
@@ -108,7 +114,7 @@ class WorkingTime(models.Model):
 class Animal(models.Model):
     name = models.CharField(verbose_name='Imię zwierzęcia', max_length=100)
     sex = models.CharField(verbose_name='Płeć zwierzęcia', choices=SEX_CHOICES, max_length=50)
-    type = models.CharField(verbose_name='Typ zwierzęcia', choices=ANIMAL_TYPES_CHOICES, max_length=50)
+    type = models.CharField(verbose_name='Gatunek zwierzęcia', choices=ANIMAL_TYPES_CHOICES, max_length=50)
     breed = models.CharField(verbose_name='Rasa zwierzęcia', max_length=300)
     weight = models.CharField(verbose_name='Waga', max_length=20, default='15kg')
     how_old = models.CharField(verbose_name='Wiek', max_length=20, default='3lata')
@@ -142,7 +148,7 @@ class Reservation(models.Model):
     animal = models.ForeignKey(Animal, on_delete=models.CASCADE, related_name="reservations", null=True, blank=True,
                                verbose_name='Zwierzę w bazie',)
     animal_name = models.CharField(verbose_name='Imię zwierzęcia', max_length=50)
-    animal_type = models.CharField(verbose_name='Typ zwierzęcia', choices=ANIMAL_TYPES_CHOICES, max_length=60)
+    animal_type = models.CharField(verbose_name='Gatunek zwierzęcia', choices=ANIMAL_TYPES_CHOICES, max_length=60)
     owner_name = models.CharField(verbose_name='Imię właściciela', max_length=500)
     owner_surname = models.CharField(verbose_name='Nazwisko właściciela', max_length=50)
     phone = models.CharField(verbose_name='Numer komórkowy', max_length=9, blank=True)

@@ -6,39 +6,60 @@
 
 {% block content %}
 
+<!-- Bootstrap Table -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.20.2/dist/bootstrap-table.min.css">
+
 <section class="post-list p-5">
     <h1 class="text-center">Lista wizyt</h1>
     <br/>
     <div class="visits">
         {% if user.is_authenticated %}
-            <a href="{% url 'choose-vet' %}" class="btn2 d-flex justify-content-center"> Dodaj nową wizytę</a> <br/>  <br/>
-            {% endif %}
-        <ol reversed>
+            <a href="{% url 'choose-vet' %}" class="btn2 d-flex justify-content-center"> Dodaj nową wizytę</a>
+        <br/>
+        <br/>
+        {% endif %}
+        <!-- Tabela -->
+        <table id="table" data-toggle="table" data-height="860" data-search="true">
+            <thead>
+            <tr>
+                <th data-sortable="true">Imię zwierzęcia</th>
+                <th data-sortable="true" data-searchable="false">Gatunek zwierzęcia</th>
+                <th data-sortable="true">Imię właściciela</th>
+                <th data-sortable="true">Nazwisko właściciela</th>
+                <th data-sortable="true">Telefon</th>
+                <th data-sortable="true">Data rezerwacji, weterynarz</th>
+                <th>Opcje</th>
+            </tr>
+            </thead>
+            <!-- Pętla, wiersze -->
             {% for reservation in object_list %}
-            <li>
-                <a href="{% url 'visit-details' reservation.pk %}">Imię zwierzęcia: {{ reservation.animal_name }} </a>|
-                Typ zwierzęcia: {{ reservation.animal_type }} |
-                Imię właściciela: {{ reservation.owner_name }} |
-                Nazwisko właściciela: {{ reservation.owner_surname }} |
-                Numer kontaktowy: {{ reservation.phone }} |
-                Data rezerwacji: {{ reservation.working_time}}
-
-
-
-                {% if user.is_authenticated %}
-                <a href="{% url 'edit-visit' reservation.pk %}"> (Edytuj) </a>
-                {% endif %}
-                {% if user.is_superuser %}
-                <a href="{% url 'delete-visit' reservation.pk %}"> (Usuń) </a>
-                {% endif %}
-                <br/>
-                {{ post.text }}
-                <br/>
-            </li>
-            {% endfor %}
-            <br/>
-        </ol>
+            <tr>
+                <td><a href="{% url 'visit-details' reservation.pk %}"> {{ reservation.animal_name }}</a></td>
+                <td>{{ reservation.animal_type }}</td>
+                <td>{{ reservation.owner_name }}</td>
+                <td>{{ reservation.owner_surname }}</td>
+                <td>{{ reservation.phone }}</td>
+                <td>{{ reservation.working_time}}</td>
+                <!-- Przyciski-->
+                        {% if user.is_authenticated %}
+                        <td>
+                            <a href="{% url 'edit-visit' reservation.pk %}"> (Edytuj) </a>
+                            {% endif %}
+                            {% if user.is_superuser %}
+                            <a href="{% url 'delete-visit' reservation.pk %}"> (Usuń) </a>
+                        </td>
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+        </table>
     </div>
 </section>
+
+<!-- Bootstrap Table -->
+<script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/bootstrap-table@1.20.2/dist/bootstrap-table.min.js"></script>
 
 {% endblock %}

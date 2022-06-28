@@ -1,4 +1,5 @@
 from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse_lazy
 from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
@@ -8,16 +9,24 @@ from .forms import AnimalForm, PostForm, ReservationForm
 from .models import Animal, Post, Reservation, Vet, Agenda
 
 
+class IsReceptionistMixin:
+    def is_receptionist(self):
+        return self.request.user.groups.filter(name='Recepcjonista').exists()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["is_receptionist"] = self.is_receptionist
+        return context
+
+
 # Blog
-
-
-class BlogView(ListView):
+class BlogView(IsReceptionistMixin, ListView):
     model = Post
     template_name = 'app/blog.html'
     ordering = ['publish_date']
 
 
-class ArticleDetailView(DetailView):
+class ArticleDetailView(IsReceptionistMixin, DetailView):
     model = Post
     template_name = 'app/article_details.html'
 
@@ -150,7 +159,7 @@ class AgendaView(ListView):
     template_name = "app/agenda.html"
 
 
-# Blog
+# Inne
 
 
 def home(request):
@@ -165,5 +174,6 @@ def services(request):
     return render(request, 'app/services.html', {})
 
 
+@login_required
 def staff_panel(request):
     return render(request, 'app/staff_panel.html', {})
